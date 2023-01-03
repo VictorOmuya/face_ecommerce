@@ -1,0 +1,19 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<div class="grid p-10 grid-cols-1 lg:grid-cols-3 sm:grid-cols-1">
+    <div class="rounded shadow-lg">
+        {% if user.profile.image %}
+        <div><img src="{{user.profile.image.url}}" alt="" style="height: 50%;"></div>
+        <div class="font-bold text-xl mb-2 px-6 py-4">{{user.username}}</div>
+        <div class="font-bold text-xl mb-2 px-6 py-4">📞 {{user.profile.contact_number}}</div>
+        {% else %}
+        <div class="mb-2 px-6 py-4">
+            <a href="{% url 'users:createprofile' %}" class="bg-green-500 text-white px-5 py-2">
+                Create Profile</a>
+        </div>
+        {% endif %}
+    </div>
+    
+</div>
+    
+{% endblock %}
